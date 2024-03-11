@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import dynamic from "next/dynamic";
+import { Suspense } from "react";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -22,7 +23,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <AsyncLDProvider>{children}</AsyncLDProvider>
+        <Suspense fallback={<div>Loading...</div>}>
+          <AsyncLDProvider>{children}</AsyncLDProvider>
+        </Suspense>
       </body>
     </html>
   );
