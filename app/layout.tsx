@@ -6,6 +6,7 @@ import { Suspense } from "react";
 import getServerClient from "@/utils/ld-server/serverClient";
 import serverflag from "@/utils/ld-server/flaggetter";
 import { unstable_noStore as noStore } from "next/cache";
+import { LDClient } from "launchdarkly-node-server-sdk";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -24,6 +25,7 @@ export default async function RootLayout({
   children: React.ReactNode;
 }>) {
 
+  // Prevents caching of the page which results in static feature flag values at build time
   noStore()
 
   const context = {
@@ -33,7 +35,7 @@ export default async function RootLayout({
   };
 
   // Server SDK Client
-  // const client = await getServerClient(process.env.LAUNCHDARKLY_SDK_KEY!);
+  // const client: LDClient = await getServerClient(process.env.LAUNCHDARKLY_SDK_KEY!);
 
   // Sample flag getter
   // const flag = await serverflag(client, "flag-key", context, false);
