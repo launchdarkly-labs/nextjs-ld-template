@@ -5,8 +5,10 @@ import { asyncWithLDProvider } from "launchdarkly-react-client-sdk";
 
 export default function AsyncLDProvider({
   children,
+  context
 }: {
   children: React.ReactNode;
+  context: any
 }) {
   const LDDynaProvider = use(
     asyncWithLDProvider({
@@ -14,11 +16,7 @@ export default function AsyncLDProvider({
       reactOptions: {
         useCamelCaseFlagKeys: false
       },
-      context: {
-        kind: "user",
-        key: "1",
-        name: "Anonymous",
-      },
+      context: context
     })
   );
 
