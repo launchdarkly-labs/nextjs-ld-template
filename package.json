@@ -6,9 +6,11 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "prettier": "npx prettier --write \"**/*.{js,ts,tsx,json,yaml,yml,md,mjs}\" --log-level warn"
   },
   "dependencies": {
+    "@launchdarkly/node-server-sdk": "^9.4.5",
     "eslint-config-next": "^14.2.3",
     "launchdarkly-node-server-sdk": "^7.0.4",
     "launchdarkly-react-client-sdk": "^3.3.2",
@@ -17,10 +19,13 @@
     "react-dom": "^18.3.1"
   },
   "devDependencies": {
+    "@trivago/prettier-plugin-sort-imports": "^4.3.0",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
+    "eslint": "^8",
     "postcss": "^8",
+    "prettier": "^3.3.1",
     "tailwindcss": "^3.4.1",
     "typescript": "^5"
   }
