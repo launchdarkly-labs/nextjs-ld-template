@@ -1,3 +1,3 @@
 export const getNodeClient = () => {
-  return global.nodeClient;
+  return global.ldNodeClient;
 };

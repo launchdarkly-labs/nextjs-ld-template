@@ -32,11 +32,11 @@ export default async function RootLayout({
     key: '1',
   };
 
-  const nodeClient = getNodeClient();
-  const bootstrap = await nodeClient.allFlagsState(context);
+  const ldNodeClient = getNodeClient();
+  const bootstrap = await ldNodeClient.allFlagsState(context);
 
   // Sample flag getter
-  // const flag = await nodeClient.variation('flag-key', context, false);
+  // const flag = await ldNodeClient.variation('flag-key', context, false);
 
   return (
     <html lang="en">

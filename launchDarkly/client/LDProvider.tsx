@@ -19,6 +19,7 @@ export function LDProvider({
       clientSideID: process.env.NEXT_PUBLIC_LD_CLIENT_SDK_KEY ?? '',
       context,
       options,
+      timeout: 5,
     }),
   );
 
