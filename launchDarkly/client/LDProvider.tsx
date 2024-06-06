@@ -3,7 +3,7 @@
 import { LDOptions } from 'launchdarkly-js-client-sdk';
 import { LDContext } from 'launchdarkly-js-sdk-common';
 import { asyncWithLDProvider } from 'launchdarkly-react-client-sdk';
-import { ReactNode, use } from 'react';
+import { ReactNode, use, useMemo } from 'react';
 
 export function LDProvider({
   children,
@@ -14,14 +14,18 @@ export function LDProvider({
   context: LDContext;
   options: LDOptions;
 }) {
-  const Provider = use(
-    asyncWithLDProvider({
-      clientSideID: process.env.NEXT_PUBLIC_LD_CLIENT_SDK_KEY ?? '',
-      context,
-      options,
-      timeout: 5,
-    }),
+  const Provider = useMemo(
+    () =>
+      asyncWithLDProvider({
+        clientSideID: process.env.NEXT_PUBLIC_LD_CLIENT_SDK_KEY ?? '',
+        context,
+        options,
+        timeout: 5,
+      }),
+    [context, options],
   );
 
-  return <Provider>{children}</Provider>;
+  const LDClientProvider = use(Provider);
+
+  return <LDClientProvider>{children}</LDClientProvider>;
 }
