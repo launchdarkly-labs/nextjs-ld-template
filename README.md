@@ -1,10 +1,14 @@
-# NextJS 14 and LaunchDarkly Template (Unofficial)
+# NextJS 14 and LaunchDarkly Template 
 
-**This is unofficial and unsupported**
+This template is a NextJS 14 template configured to resolve both Client-Side feature flags using the React SDK as well as Server-Side Feature flags in API Routes and React Server components. 
 
-This template is a NextJS 14 template with the LaunchDarkly React Client SDK configured to resolve client-side feature flags.
+You can find examples of both of these in the `/app/components` directory
 
-In order to leverage this template for client side code, you'll need to make the following adjustments
+- Client-Side Component - `/app/components/helloLDClient.tsx`
+- Server-Side Component - `/app/components/helloLDRSC.tsx`
+  
+This template bootstraps the flag data to client-side using the LaunchDarkly Node SDK to ensure better performance and all flags available at render time. 
 
-- Update `.env.local` or `.env` with your correct client SDK keys
-- Ensure you are using `'use client'` in your client components in order for this to render successfully
+Additional examples are included for setting server cookies for LaunchDarkly contexts, and reading them in server-side connections, allowing feature targeting use cases. This example is in `/server/helpers/getServerContext.ts`
+
+**Note:** When using client-side functionality, ensure you are using `'use client'` in your client components in order to evaluate feature flags successfully

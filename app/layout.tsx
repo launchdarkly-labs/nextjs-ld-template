@@ -23,6 +23,7 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  
   // Prevents caching of the page which results in static feature flag values at build time
   noStore();
 
@@ -34,9 +35,6 @@ export default async function RootLayout({
 
   const ldNodeClient = getNodeClient();
   const bootstrap = await ldNodeClient.allFlagsState(context);
-
-  // Sample flag getter
-  // const flag = await ldNodeClient.variation('flag-key', context, false);
 
   return (
     <html lang="en">
